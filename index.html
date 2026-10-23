@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AlphaTake</title>
+<meta name="description" content="Everyone has a take on the market. Write yours, and AlphaTake turns it into a paper portfolio of Indian stocks and scores it against the Nifty 50. Coming soon on iPhone.">
+<meta property="og:title" content="AlphaTake">
+<meta property="og:description" content="Everyone has a take on the market. Now yours keeps score.">
+<meta property="og:image" content="https://alphatake.in/poster.jpg">
+<meta name="theme-color" content="#06070B">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Latin:wdth,wght@100..125,400..800&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400&family=Tiro+Devanagari+Hindi&display=swap">
+<link rel="stylesheet" href="home.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="iphone" viewBox="0 0 24 24"><rect x="6" y="1.5" width="12" height="21" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="10" y="3.6" width="4" height="1.4" rx=".7" fill="currentColor"/></symbol>
+  <symbol id="pause" viewBox="0 0 14 14"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></symbol>
+  <symbol id="play" viewBox="0 0 14 14"><path d="M3 1.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 3 1.5z"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="AlphaTake home"><span class="mark" aria-hidden="true">α</span>AlphaTake</a>
+    <nav class="nav-links" aria-label="Page">
+      <a href="#how">How it works</a>
+      <a href="#why">Why AlphaTake</a>
+      <span class="chip"><span class="live" aria-hidden="true"></span>Coming soon on iPhone</span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-h">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="chip"><span class="live" aria-hidden="true"></span>Paper money. Real market.</span>
+        <h1 id="hero-h">
+          <span class="ln"><span>Everyone has</span></span>
+          <span class="ln"><span>a take on</span></span>
+          <span class="ln"><span>the market.</span></span>
+          <span class="ln dim"><span>Now yours</span></span>
+          <span class="ln dim"><span>keeps score.</span></span>
+        </h1>
+        <p class="lede reveal">Say what you think will happen, in plain words. AlphaTake finds the companies it moves, shows you why, and builds a paper portfolio you can track against the Nifty 50.</p>
+        <div class="cta-row reveal">
+          <span class="badge"><svg aria-hidden="true"><use href="#iphone"/></svg><span><small>Coming soon</small><b>on iPhone</b></span></span>
+          <span class="note">India first. English and Hindi.</span>
+        </div>
+      </div>
+
+      <div class="stage" id="hero-stage">
+        <div class="phone" id="hero-phone">
+          <video id="hero-video" src="demo.mp4" poster="poster.jpg" muted loop playsinline preload="auto" aria-label="The AlphaTake app in use: the feed, agreeing with a take, the engine building a portfolio, and tracking it"></video>
+        </div>
+        <div class="float f1" data-speed="-60">
+          <div class="who"><span class="av" aria-hidden="true">R</span><span><b>Riya</b> wrote a take</span></div>
+          <div class="q">Rate cuts will make banks beat IT this year.</div>
+          <div class="big up">+8.4%</div>
+          <div style="margin-top:4px">vs Nifty 50 +2.1%</div>
+        </div>
+        <div class="float f2" data-speed="-120">
+          <div class="who"><span class="av" aria-hidden="true">A</span><span><b>Arjun</b> disagreed</span></div>
+          <div class="agree" aria-hidden="true"><span>Agree</span><span class="on">Disagree</span></div>
+        </div>
+        <div class="float f3" data-speed="-30">
+          <div>What you'd own</div>
+          <div class="sleeve" aria-hidden="true"><i style="width:34%;background:#6D65FF"></i><i style="width:26%;background:#8F89FF"></i><i style="width:18%;background:#B9B5FF"></i><i style="width:22%;background:#3A3F4C"></i></div>
+          <div style="margin-top:8px;color:var(--ink)"><b>HDFC Bank</b> 24% · <b>ICICI Bank</b> 21% · +5</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-label="Example takes and how they did">
+    <div class="tape-track" id="tape"></div>
+  </div>
+
+  <section class="wrap sec" id="how" aria-labelledby="how-h">
+    <div class="kicker reveal">How it works</div>
+    <h2 id="how-h" class="reveal">From a hunch to a portfolio, on your phone</h2>
+    <div class="player">
+      <ol class="chapters" id="chapters"></ol>
+      <div class="stage">
+        <div class="glow" aria-hidden="true"></div>
+        <div class="phone">
+          <video id="demo-video" src="demo.mp4" poster="poster.jpg" muted loop playsinline preload="metadata" aria-label="Walkthrough of the AlphaTake app"></video>
+        </div>
+        <button class="pp" id="pp" type="button" aria-label="Pause the walkthrough"><svg aria-hidden="true"><use href="#pause"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap statement" aria-label="Why AlphaTake">
+    <p id="statement">Everyone has an opinion on the market. Almost no one checks if they were right. AlphaTake turns every opinion into a portfolio, and every portfolio into a score.</p>
+  </section>
+
+  <section class="wrap sec" id="why" style="padding-top:0" aria-labelledby="why-h">
+    <div class="kicker reveal">Why AlphaTake</div>
+    <h2 id="why-h" class="reveal">Built to tell you if you were right</h2>
+    <div class="pillars">
+      <article class="pillar reveal">
+        <div class="viz"><div class="ticket" aria-label="Example paper trade: bought 22 HDFC Bank shares at 1,642 rupees 10 paise, with 18 rupees 40 paise in charges">
+          <div class="tk-row"><span><b>HDFC Bank</b> · 22 shares</span><span class="tk-tag">Bought</span></div>
+          <div class="tk-row tk-dim"><span>at ₹1,642.10, market price</span><span>charges ₹18.40</span></div>
+          <div class="tk-row"><span><b>Tata Power</b> · 19 shares</span><span class="tk-tag">Bought</span></div>
+          <div class="tk-row tk-dim"><span>at ₹394.70, market price</span><span>charges ₹7.85</span></div>
+        </div></div>
+        <h3>Paper money, real market</h3>
+        <p>Buys happen at real prices, less the charges a broker would take. Your money is never touched, and your record never resets.</p>
+      </article>
+      <article class="pillar reveal">
+        <div class="viz" aria-hidden="true">
+          <svg viewBox="0 0 300 120">
+            <path class="draw" d="M0 100 C40 98 60 90 90 86 S140 70 170 64 S230 40 300 18" fill="none" stroke="#6D65FF" stroke-width="3" stroke-linecap="round"/>
+            <path class="draw" d="M0 100 C40 99 70 96 100 95 S160 90 200 88 S260 84 300 80" fill="none" stroke="#5E6472" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="300" cy="18" r="4" fill="#6D65FF"/>
+          </svg>
+        </div>
+        <h3>Scored against the Nifty 50</h3>
+        <p>Every take is measured against the index over the same trading days. You see straight away if your view beat the market.</p>
+      </article>
+      <article class="pillar reveal">
+        <div class="viz"><p class="hindi" lang="hi">जिस पर आपको यक़ीन है, उस पर पैसा लगाइए।<small lang="en">Put your money behind what you believe.</small></p></div>
+        <h3>In English or Hindi</h3>
+        <p>The whole app works in both, from your first take to your score. Write it the way you would say it.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="end" aria-labelledby="end-h">
+    <div class="wrap">
+      <h2 id="end-h">What's your take?</h2>
+      <p class="sub reveal">AlphaTake is coming soon to iPhone.</p>
+      <div class="cta-row reveal" style="margin-top:40px">
+        <span class="badge"><svg aria-hidden="true"><use href="#iphone"/></svg><span><small>Coming soon</small><b>on iPhone</b></span></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Paper money only. Not investment advice. Example takes on this page are illustrative.</span>
+    <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s) => document.querySelector(s);
+  const pct = (v) => (v > 0 ? '+' : '−') + Math.abs(v).toFixed(1) + '%';
+
+  // Nav turns solid once the page scrolls.
+  const nav = $('#nav');
+  const onScroll = () => nav.classList.toggle('solid', scrollY > 24);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // Tape of example takes.
+  const TAPE = [['Riya', 'Banks will beat IT this year', 8.4], ['Kabir', 'Defence spending stays high', 12.9], ['Meera', 'A record hot summer', -1.8],
+    ['Arjun', 'IT bounces back', -3.2], ['Zoya', 'EV two-wheelers win the cities', 5.1], ['Dev', 'Gold keeps climbing', 6.7],
+    ['Ananya', 'Railways get a capex boost', 9.3], ['Sameer', 'Quick commerce eats retail', -0.6], ['Ishaan', 'Rooftop solar takes off', 4.2]];
+  const items = TAPE.map(([w, t, v]) => `<span class="tape-item">${w}<span class="t">${t}</span><b class="${v >= 0 ? 'up' : 'down'}">${pct(v)}</b></span>`).join('');
+  $('#tape').innerHTML = items + (reduce ? '' : items.replace(/class="tape-item"/g, 'class="tape-item" aria-hidden="true"'));
+
+  // The walkthrough: chapters follow the video, and pick a point in it.
+  const CH = [
+    [0, 'Follow what people believe', 'Takes from people you follow, each one scored against the Nifty 50 as it goes.'],
+    [8.5, 'Agree, or take the other side', 'Agree backs a take with your paper money. Disagree builds the opposite.'],
+    [14.5, 'Say how sure you are', 'Pick how sure you are and how much paper money to put in.'],
+    [22.5, 'See what you would own', 'Whole shares, each with its sources, and every charge shown before you buy.'],
+    [40.5, 'Watch the engine build it', 'Write any belief. The engine maps cause and effect, reads the sources and scores every company, live.'],
+    [61.5, 'Know why every share is there', 'Follow your belief to each company, link by link, with the page behind each link.'],
+    [68.5, 'Track it every trading day', 'Everything you own, live, against the Nifty 50.'],
+  ];
+  const vid = $('#demo-video'), list = $('#chapters'), pp = $('#pp');
+  CH.forEach(([t, h, d], i) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<button type="button"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="h">${h}</span><span class="d">${d}</span><span class="bar"><i></i></span></button>`;
+    li.firstChild.addEventListener('click', () => { vid.currentTime = t + 0.05; play(vid, true); });
+    list.append(li);
+  });
+  const btns = [...list.querySelectorAll('button')];
+  let active = -1;
+  const sync = () => {
+    const t = vid.currentTime, dur = vid.duration || 71;
+    let i = CH.length - 1; while (i > 0 && CH[i][0] > t) i--;
+    if (i !== active) { btns.forEach((b, j) => b.setAttribute('aria-current', j === i)); active = i; }
+    const end = i + 1 < CH.length ? CH[i + 1][0] : dur;
+    btns[i].querySelector('.bar i').style.width = Math.min(100, (t - CH[i][0]) / (end - CH[i][0]) * 100) + '%';
+  };
+  vid.addEventListener('timeupdate', sync); sync();
+
+  let userPaused = reduce;
+  function play(v, byUser) { if (byUser) userPaused = false; v.play().catch(() => {}); setPP(); }
+  function setPP() {
+    const paused = vid.paused && userPaused;
+    pp.setAttribute('aria-label', paused ? 'Play the walkthrough' : 'Pause the walkthrough');
+    pp.innerHTML = `<svg aria-hidden="true"><use href="#${paused ? 'play' : 'pause'}"/></svg>`;
+  }
+  pp.addEventListener('click', () => { if (vid.paused) play(vid, true); else { userPaused = true; vid.pause(); setPP(); } });
+  setPP();
+
+  // Each video plays only while it is on screen.
+  const hero = $('#hero-video');
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    const v = e.target;
+    if (e.isIntersecting && !(v === vid ? userPaused : reduce)) v.play().catch(() => {});
+    else if (!e.isIntersecting) v.pause();
+    if (v === vid) setPP();
+  }), { threshold: 0.35 });
+  io.observe(hero); io.observe(vid);
+
+  // Statement: words light up as it scrolls past.
+  const st = $('#statement');
+  st.innerHTML = st.textContent.split(' ').map((w) => `<span class="w">${w}</span>`).join(' ');
+
+  // The hero's network of companies, with takes travelling through it.
+  const NAMES = ['HDFC Bank', 'ICICI Bank', 'SBI', 'Reliance', 'TCS', 'Infosys', 'L&T', 'ITC', 'HAL', 'BEL', 'NTPC', 'Tata Power', 'Adani Ports',
+    'Bharti Airtel', 'Maruti', 'Tata Motors', 'M&M', 'Sun Pharma', 'Titan', 'Asian Paints', 'Bajaj Finance', 'Axis Bank', 'Kotak Bank', 'HUL',
+    'Wipro', 'HCLTech', 'Coal India', 'ONGC', 'Power Grid', 'JSW Steel', 'Tata Steel', 'UltraTech', 'Voltas', 'Dixon', 'Trent', 'DMart', 'IRCTC',
+    'BHEL', 'Cipla', "Dr Reddy's", 'Hero MotoCorp', 'Eicher', 'TVS Motor', 'Exide', 'Amara Raja', 'Polycab', 'Havells', 'Siemens', 'ABB',
+    'Bharat Dynamics', 'Mazagon Dock', 'IRFC', 'Shriram Finance', 'Bajaj Auto', 'Nestle India', 'Britannia', 'Pidilite', 'Blue Star', 'Godrej Consumer'];
+  const cv = $('#net'), cx = cv.getContext('2d');
+  let W = 0, H = 0, nodes = [], pulses = [], running = true, last = 0, mx = 0, my = 0, since = 0;
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  function layout() {
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.round(Math.min(NAMES.length, W * H / 26000));
+    nodes = NAMES.slice().sort(() => Math.random() - 0.5).slice(0, n).map((name) => ({
+      name, x: rnd(0.04, 0.98) * W, y: rnd(0.08, 0.95) * H, p: rnd(0, Math.PI * 2), s: rnd(0.15, 0.4), lit: 0,
+    }));
+    pulses = [];
+  }
+  function near(a) { return nodes.filter((b) => b !== a && Math.hypot(a.x - b.x, a.y - b.y) < 240); }
+  function spawn() {
+    const path = [nodes[Math.floor(Math.random() * nodes.length)]];
+    for (let k = 0; k < 3; k++) { const c = near(path[path.length - 1]).filter((b) => !path.includes(b)); if (!c.length) break; path.push(c[Math.floor(Math.random() * c.length)]); }
+    if (path.length > 1) pulses.push({ path, seg: 0, t: 0 });
+  }
+  function pos(n, time) { return [n.x + Math.sin(time * 0.0006 * n.s + n.p) * 10 + mx * n.s * 18, n.y + Math.cos(time * 0.0005 * n.s + n.p) * 8 + my * n.s * 14]; }
+  function frame(time) {
+    const dt = Math.min(50, time - last); last = time;
+    cx.clearRect(0, 0, W, H);
+    const P = nodes.map((n) => pos(n, time));
+    cx.lineWidth = 1;
+    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+      const d = Math.hypot(P[i][0] - P[j][0], P[i][1] - P[j][1]);
+      if (d < 170) { cx.strokeStyle = `rgba(150,156,190,${(1 - d / 170) * 0.13})`; cx.beginPath(); cx.moveTo(P[i][0], P[i][1]); cx.lineTo(P[j][0], P[j][1]); cx.stroke(); }
+    }
+    for (const p of pulses) {
+      p.t += dt / 520;
+      const a = p.path[p.seg], b = p.path[p.seg + 1];
+      const A = P[nodes.indexOf(a)], B = P[nodes.indexOf(b)], k = Math.min(1, p.t);
+      const x = A[0] + (B[0] - A[0]) * k, y = A[1] + (B[1] - A[1]) * k;
+      const g = cx.createLinearGradient(A[0], A[1], x, y); g.addColorStop(0, 'rgba(109,101,255,0)'); g.addColorStop(1, 'rgba(156,150,255,0.9)');
+      cx.strokeStyle = g; cx.lineWidth = 1.6; cx.beginPath(); cx.moveTo(A[0], A[1]); cx.lineTo(x, y); cx.stroke();
+      cx.fillStyle = '#C8C4FF'; cx.shadowColor = '#6D65FF'; cx.shadowBlur = 14; cx.beginPath(); cx.arc(x, y, 2.6, 0, 7); cx.fill(); cx.shadowBlur = 0;
+      a.lit = 1;
+      if (p.t >= 1) { b.lit = 1; p.seg++; p.t = 0; }
+    }
+    pulses = pulses.filter((p) => p.seg < p.path.length - 1);
+    cx.font = '500 12px "Anek Latin", system-ui, sans-serif';
+    nodes.forEach((n, i) => {
+      const [x, y] = P[i], l = n.lit;
+      cx.fillStyle = l > 0.02 ? `rgba(156,150,255,${0.35 + l * 0.65})` : 'rgba(120,126,145,0.55)';
+      cx.beginPath(); cx.arc(x, y, 2 + l * 1.5, 0, 7); cx.fill();
+      cx.fillStyle = l > 0.02 ? `rgba(200,196,255,${0.4 + l * 0.6})` : 'rgba(110,116,134,0.5)';
+      cx.fillText(n.name, x + 7, y + 4);
+      n.lit = Math.max(0, l - dt / 1800);
+    });
+    since += dt; if (since > 700) { since = 0; spawn(); }
+    if (running) requestAnimationFrame(frame);
+  }
+  layout();
+  const still = () => requestAnimationFrame((t) => { last = t; const r = running; running = false; frame(t); running = r; });
+  if (reduce) { running = false; still(); }
+  else {
+    for (let k = 0; k < 3; k++) spawn();
+    requestAnimationFrame((t) => { last = t; frame(t); });
+    new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was) requestAnimationFrame((t) => { last = t; frame(t); }); }).observe(cv);
+    addEventListener('pointermove', (e) => { mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5; }, { passive: true });
+  }
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { layout(); if (reduce) still(); }, 200); });
+  if (document.fonts) document.fonts.ready.then(() => { if (reduce) still(); });
+
+  // Motion.
+  if (reduce || !window.gsap) { document.querySelectorAll('.statement .w').forEach((w) => w.classList.add('on')); if (!reduce) hero.play().catch(() => {}); return; }
+  gsap.registerPlugin(ScrollTrigger);
+  const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  tl.from('.hero .chip', { y: 16, opacity: 0, duration: .7 })
+    .from('h1 .ln > span', { yPercent: 110, duration: 1.1, stagger: .08 }, '<.1')
+    .from('.hero .reveal', { y: 24, opacity: 0, duration: .9, stagger: .1 }, '-=.7')
+    .from('#hero-phone', { y: 120, opacity: 0, rotate: 4, duration: 1.4, ease: 'power3.out', onStart: () => hero.play().catch(() => {}) }, .25)
+    .from('.float', { y: 30, opacity: 0, scale: .92, duration: .9, stagger: .15, ease: 'back.out(1.6)' }, .9);
+  gsap.utils.toArray('.float').forEach((f, i) => {
+    gsap.to(f, { y: '+=10', duration: 2.6 + i * .4, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: 2 });
+    gsap.to(f, { yPercent: +f.dataset.speed / 3, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  });
+  gsap.to('#hero-phone', { y: -50, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.utils.toArray('main > section:not(.hero) .reveal').forEach((el) => gsap.from(el, { y: 40, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } }));
+  gsap.from('.player .phone', { y: 80, opacity: 0, rotate: -3, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.player', start: 'top 80%' } });
+  gsap.from('.chapters li', { x: -24, opacity: 0, duration: .8, stagger: .07, ease: 'power3.out', scrollTrigger: { trigger: '.player', start: 'top 80%' } });
+  const words = gsap.utils.toArray('.statement .w');
+  ScrollTrigger.create({ trigger: '.statement', start: 'top 80%', end: 'bottom 45%', scrub: true,
+    onUpdate: (s) => { const n = Math.round(s.progress * words.length); words.forEach((w, i) => w.classList.toggle('on', i < n)); } });
+  gsap.utils.toArray('.draw').forEach((p) => { const L = p.getTotalLength(); gsap.fromTo(p, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 1.8, ease: 'power2.inOut', scrollTrigger: { trigger: '.pillars', start: 'top 80%' } }); });
+  gsap.from('.end h2', { scale: .9, opacity: 0, y: 30, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.end', start: 'top 75%' } });
+})();
+</script>
+</body>
+</html>
