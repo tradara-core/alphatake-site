@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AlphaTake</title>
+<meta name="description" content="A take on AlphaTake: a belief about the market, the companies it reaches, and how it did against the Nifty 50.">
+<meta name="theme-color" content="#06070B">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/GeneralSans-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@900&display=swap">
+<link rel="stylesheet" href="/home.css">
+<style>
+  /* A shared take (alphatake.in/t/<id>): GitHub Pages serves this page for any path it has no file for. */
+  .share { min-height: 100vh; min-height: 100svh; padding: 110px 0 64px; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; justify-items: center; }
+  .share .wrap { width: 100%; max-width: 560px; }
+  .take { position: relative; overflow: hidden; border-radius: 30px; padding: 22px; color: #fff; }
+  .take::before { content: ""; position: absolute; inset: 0; background: radial-gradient(80% 60% at 75% 0%, rgba(255,255,255,.28), rgba(255,255,255,0) 70%); pointer-events: none; }
+  .take > * { position: relative; }
+  .take .belief { font-size: clamp(24px, 6vw, 30px); line-height: 1.12; letter-spacing: -0.025em; margin: 16px 0 0; min-height: 0; }
+  .take .tiles { margin-top: 18px; }
+  .chart { margin-top: 18px; width: 100%; height: 150px; display: block; }
+  .holds { margin: 22px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .holds li { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+  .holds .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .holds .bar { width: 90px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.14); overflow: hidden; }
+  .holds .bar i { display: block; height: 100%; background: #fff; }
+  .holds .pct { width: 44px; text-align: right; font-variant-numeric: tabular-nums; color: var(--ink2); }
+  .open { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center; }
+  .fine { margin-top: 18px; color: var(--ink3); font-size: 13px; }
+  .gone h1 { font-size: clamp(30px, 6vw, 44px); margin: 0; }
+  .gone p { color: var(--ink2); }
+  .hold { border-radius: 30px; height: 420px; background: var(--pane); box-shadow: inset 0 0 0 1px var(--pane-line); animation: breathe 1.8s ease-in-out infinite alternate; }
+  @keyframes breathe { from { opacity: 1 } to { opacity: .45 } }
+  @media (prefers-reduced-motion: reduce) { .hold { animation: none } }
+  /* the badge below says it; the header has no room for both on a narrow phone */
+  @media (max-width: 380px) { .nav-links { display: none } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="iphone" viewBox="0 0 24 24"><rect x="6" y="1.5" width="12" height="21" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="10" y="3.6" width="4" height="1.4" rx=".7" fill="currentColor"/></symbol>
+  <symbol id="tick" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#06070B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+<header class="nav solid">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="AlphaTake home"><img class="mark" src="/logo.svg" alt="" width="32" height="32">AlphaTake</a>
+    <nav class="nav-links" aria-label="Page"><span class="pill"><span class="live" aria-hidden="true"></span>Coming soon on iPhone</span></nav>
+  </div>
+</header>
+<main class="share"><div class="wrap" id="root"><div class="hold" aria-label="Loading the take"></div></div></main>
+<footer><div class="wrap foot"><span>Paper money only. Not investment advice. Past moves of a take's companies do not predict future returns.</span><nav><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></nav></div></footer>
+<script>
+(() => {
+  // The take's API: the same server the app uses. Public takes only, percentages only.
+  const API = 'https://staging.tradara.in/api/alphatake';
+  const root = document.getElementById('root');
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const sg = (v, pct = true) => (v >= 0 ? '+' : '−') + Math.abs(v).toFixed(2) + (pct ? '%' : '');
+  const dots = (t) => t.replace(/[+−.]/g, (ch) => `<i>${ch}</i>`);
+  const HUES = ['indigo', 'amber', 'teal'];
+  const hueOf = (id) => HUES[[...id].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7) % 3];
+  const gone = (title, body) => {
+    document.title = 'AlphaTake';
+    root.innerHTML = `<div class="gone"><h1>${title}</h1><p>${body}</p><p><a href="/">See what AlphaTake is</a></p></div>`;
+  };
+  const m = location.pathname.match(/^\/t\/([0-9a-f-]{36})\/?$/i);
+  if (!m) return gone('Nothing here', 'This page does not exist.');
+  const line = (pts) => {
+    if (!pts || pts.length < 2) return '';
+    const W = 500, H = 150, vals = pts.flatMap((p) => [p.returnPct, p.benchmarkPct]);
+    const lo = Math.min(...vals), hi = Math.max(...vals), span = hi - lo || 1;
+    const x = (i) => (i / (pts.length - 1)) * (W - 12), y = (v) => 8 + (hi - v) / span * (H - 16);
+    const path = (k) => pts.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(p[k]).toFixed(1)}`).join(' ');
+    const last = pts[pts.length - 1];
+    return `<svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="The take's line against the dotted Nifty 50 line">
+      <path d="${path('benchmarkPct')}" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6" stroke-dasharray="1.5 5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <path d="${path('returnPct')}" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <circle cx="${x(pts.length - 1).toFixed(1)}" cy="${y(last.returnPct).toFixed(1)}" r="4" fill="#fff"/></svg>`;
+  };
+  fetch(`${API}/public/takes/${m[1]}`).then(async (r) => {
+    if (r.status === 404) return gone('This take is private', 'Its author has not shared it, or it no longer exists.');
+    if (!r.ok) throw new Error(String(r.status));
+    const { take, weights, window: w } = await r.json();
+    const a = take.author, ret = w ? w.returnPct : take.window?.returnPct, bench = w ? w.benchmarkPct : take.window?.benchmarkPct;
+    const label = w ? (w.key === '1Y' ? '1 year' : w.key) : '1 year';
+    document.title = a.displayName === 'AlphaTake' ? `${take.belief} - AlphaTake` : `${a.displayName} on AlphaTake`;
+    const lead = ret != null && bench != null ? ret - bench : null;
+    root.innerHTML = `<article class="take lit ${hueOf(take.id)}">
+      <div class="who"><span class="disc" style="overflow:hidden">${a.photoVersion != null ? `<img src="${API}/photos/${encodeURIComponent(a.userId)}?v=${a.photoVersion}" alt="" width="36" height="36">` : esc(a.displayName.slice(0, 1))}</span><span><b>${esc(a.displayName)}${a.verified ? '<svg class="tk" aria-label="verified"><use href="#tick"/></svg>' : ''}</b><small>@${esc(a.handle)}</small></span></div>
+      <p class="belief">${esc(take.belief)}</p>
+      ${ret != null ? `<div class="tiles"><span><small>${esc(label)}</small><b class="dot">${dots(sg(ret))}</b></span><span><small>vs Nifty 50</small><b class="dot ${lead >= 0 ? 'good' : 'bad'}">${dots(sg(lead, false))}</b></span></div>` : ''}
+      ${w ? line(w.points) : ''}
+    </article>
+    ${weights?.length ? `<ul class="holds" aria-label="Companies by share of the take">${weights.slice(0, 8).map((h) => `<li><span class="name">${esc(h.name || h.symbol)}</span><span class="bar" aria-hidden="true"><i style="width:${Math.round(h.weight * 100)}%"></i></span><span class="pct">${Math.round(h.weight * 100)}%</span></li>`).join('')}</ul>` : ''}
+    <div class="open"><span class="badge"><svg aria-hidden="true"><use href="#iphone"/></svg><span><small>Coming soon</small><b>on iPhone</b></span></span><span class="note">Make your own take, scored against the Nifty 50.</span></div>
+    <p class="fine">Paper money. Not investment advice. ${w ? 'The line is how the take’s companies moved, weighted as it holds them.' : ''}</p>`;
+  }).catch(() => gone('This take did not load', 'Try again in a moment.'));
+})();
+</script>
+</body>
+</html>
