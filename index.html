@@ -4,29 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AlphaTake</title>
-<meta name="description" content="Everyone has a take on the market. Write yours, and AlphaTake turns it into a paper portfolio of Indian stocks and scores it against the Nifty 50. Coming soon on iPhone.">
-<meta property="og:title" content="AlphaTake">
-<meta property="og:description" content="Everyone has a take on the market. Now yours keeps score.">
-<meta property="og:image" content="https://alphatake.in/poster.jpg">
+<meta name="description" content="Conviction deserves a desk. You bring the view; AlphaTake builds the portfolio, invests it through your own broker and watches it every trading day. Coming soon on iPhone and Android.">
+<meta property="og:title" content="AlphaTake: conviction deserves a desk">
+<meta property="og:description" content="You bring the view. AlphaTake builds the portfolio, watches it every trading day, and tells you when the evidence changes.">
+<meta property="og:image" content="https://alphatake.in/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#06070B">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/GeneralSans-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@700;900&family=Tiro+Devanagari+Hindi&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@900&display=swap">
 <link rel="stylesheet" href="home.css">
 </head>
-<body>
+<body class="ed">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="iphone" viewBox="0 0 24 24"><rect x="6" y="1.5" width="12" height="21" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="10" y="3.6" width="4" height="1.4" rx=".7" fill="currentColor"/></symbol>
+  <symbol id="android" viewBox="0 0 24 24"><path d="M3 19.5a9 9 0 0 1 18 0z" fill="currentColor"/><path d="M7.4 11.9 5.6 8.9M16.6 11.9l1.8-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="8.7" cy="15.8" r="1.15" fill="var(--eye, #F4F5F8)"/><circle cx="15.3" cy="15.8" r="1.15" fill="var(--eye, #F4F5F8)"/></symbol>
   <symbol id="tick" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#06070B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="arr-up" viewBox="0 0 16 16"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="arr-down" viewBox="0 0 16 16"><path d="M8 3v10M3.5 8.5 8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="chev" viewBox="0 0 16 16"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="sbar" viewBox="0 0 76 18"><rect x="0" y="11" width="3.4" height="6" rx="1" fill="currentColor"/><rect x="5" y="8" width="3.4" height="9" rx="1" fill="currentColor"/><rect x="10" y="5" width="3.4" height="12" rx="1" fill="currentColor"/><rect x="15" y="2" width="3.4" height="15" rx="1" fill="currentColor"/><path d="M33 6.2a10 10 0 0 1 13.5 0l-1.6 1.7a7.6 7.6 0 0 0-10.3 0zM35.8 9.2a6 6 0 0 1 7.9 0L42 10.9a3.6 3.6 0 0 0-4.5 0zM39.75 14.6l-1.6-1.7a2.3 2.3 0 0 1 3.2 0z" fill="currentColor"/><rect x="52.5" y="3" width="21" height="12" rx="3.6" fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="1.2"/><rect x="54.3" y="4.8" width="17.4" height="8.4" rx="2.2" fill="#4FD597"/><rect x="74.4" y="7" width="1.6" height="4" rx=".8" fill="currentColor" fill-opacity=".45"/></symbol>
+  <symbol id="pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="bank" viewBox="0 0 24 24"><path d="M3.5 9.2h17M5.8 9.2v8.3M9.9 9.2v8.3M14.1 9.2v8.3M18.2 9.2v8.3M3.5 19.8h17M12 3.5l8.5 4.6h-17z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></symbol>
   <symbol id="g-energy" viewBox="0 0 24 24"><path d="M13.2 2.5 5 13.6h6.1l-1.3 7.9 8.2-11.1h-6.1z" fill="currentColor"/></symbol>
-  <symbol id="g-financials" viewBox="0 0 24 24"><path d="M3.5 9.2h17M5.8 9.2v8.3M9.9 9.2v8.3M14.1 9.2v8.3M18.2 9.2v8.3M3.5 19.8h17M12 3.5l8.5 4.6h-17z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></symbol>
-  <symbol id="g-health" viewBox="0 0 24 24"><path d="M2.8 12.4h4.1l2.3-5.6 4.3 10.6 2.4-5h5.3" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="g-consumer" viewBox="0 0 24 24"><path d="M5.8 8.2h12.4l-1 12.1H6.8zM9 8.2V6.6a3 3 0 0 1 6 0v1.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
   <symbol id="g-industrials" viewBox="0 0 24 24"><path d="M3.5 20V10.6l5 3v-3l5 3V5.5h7V20zM16.4 9h1.6M16.4 12.5h1.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></symbol>
-  <symbol id="g-tech" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><rect x="10" y="10" width="4" height="4" rx=".8" fill="currentColor"/></symbol>
   <symbol id="g-macro" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.6 5.3 3.6 8.5s-1 6.1-3.6 8.5c-2.6-2.4-3.6-5.3-3.6-8.5s1-6.1 3.6-8.5z" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
   <symbol id="g-alphatake" viewBox="0 0 64 64"><g transform="translate(-3.4 2.5)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M35.2 33.2 C 37.4 37.9 40.6 42 45.2 43.9 C 49.4 45.6 54.6 45.8 60.5 45.8" stroke-opacity=".75" stroke-width="4.2" stroke-dasharray=".1 6"/><path d="M35.2 33.2 C 32.3 25.6 27.4 20.4 21.4 20.4 C 14.7 20.4 10.4 26 10.4 32.6 C 10.4 39.3 14.9 44.8 21.1 44.8 C 27.9 44.8 32.4 38.6 35.2 33.2 C 39.4 25.4 44.6 18.4 52.8 13.4" stroke-width="7"/></g></symbol>
 </svg>
@@ -35,10 +42,10 @@
   <div class="wrap">
     <a class="brand" href="/" aria-label="AlphaTake home"><img class="mark" src="logo.svg" alt="" width="32" height="32">AlphaTake</a>
     <nav class="nav-links" aria-label="Page">
-      <a href="#takes">Takes</a>
       <a href="#how">How it works</a>
+      <a href="#reasoning">The reasoning</a>
       <a href="#desks">Desks</a>
-      <span class="pill"><span class="live" aria-hidden="true"></span>Coming soon on iPhone</span>
+      <span class="pill"><span class="live" aria-hidden="true"></span><span class="long">Coming soon on iPhone and Android</span><span class="short">Coming soon</span></span>
     </nav>
   </div>
 </header>
@@ -48,110 +55,224 @@
     <canvas id="net" aria-hidden="true"></canvas>
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <span class="pill"><span class="live" aria-hidden="true"></span>Paper money. Real market.</span>
-        <h1 id="hero-h">
-          <span class="ln"><span>Everyone has a take on the market.</span></span>
-          <span class="ln dim"><span>Now yours keeps score.</span></span>
-        </h1>
-        <p class="lede reveal">Say what you think will happen, in plain words. AlphaTake finds the companies it moves, shows you why, and builds a paper portfolio you track against the Nifty 50, every trading day.</p>
+        <span class="eyebrow reveal">A research desk for your view of the market</span>
+        <h1 id="hero-h"><span class="ln"><span>Conviction deserves a desk.</span></span></h1>
+        <p class="lede reveal">You bring the view. AlphaTake builds the portfolio, watches it every trading day, and tells you when the evidence changes. Every decision stays yours, and every share stays in your own account.</p>
         <div class="cta-row reveal">
           <span class="badge"><svg aria-hidden="true"><use href="#iphone"/></svg><span><small>Coming soon</small><b>on iPhone</b></span></span>
-          <span class="note">India first. English and Hindi.</span>
+          <span class="badge ghost"><svg aria-hidden="true" style="--eye:#06070B"><use href="#android"/></svg><span><small>Coming soon</small><b>on Android</b></span></span>
         </div>
+        <p class="note reveal">Indian equities first.</p>
       </div>
-
-      <div class="stage" id="hero-stage">
-        <div class="phone" id="hero-phone"><video id="hero-video" src="demo.mp4" poster="shots/feed.jpg" width="603" height="1311" muted loop playsinline preload="metadata" aria-label="The AlphaTake app in use: the feed, a take's graph against the Nifty 50, the Map from a belief to each company, and a company's page"></video></div>
-        <article class="lit indigo float f1" aria-label="Example take: nuclear energy, up 61.61% over a year">
-          <div class="who"><span class="disc"><svg><use href="#g-alphatake"/></svg></span><span><b>AlphaTake<svg class="tk" aria-label="verified"><use href="#tick"/></svg></b><small>@alphatake</small></span></div>
-          <p class="belief">Nuclear energy will grow a lot in the coming decade.</p>
-          <div class="tiles"><span><small>1 year</small><b class="dot"><i>+</i>61<i>.</i>61%</b></span><span><small>vs Nifty 50</small><b class="dot good"><i>+</i>74<i>.</i>32</b></span></div>
-        </article>
-        <div class="glass float f2" aria-hidden="true">
-          <small>What it holds</small>
-          <div class="sleeve"><i style="width:36%;background:#A9A3FF"></i><i style="width:36%;background:#7C74FF"></i><i style="width:28%;background:#4E46D8"></i></div>
-          <div class="hold-names"><b>BHEL</b> 36% · <b>TARIL</b> 36% · <b>MTAR</b> 28%</div>
-        </div>
+      <div class="stage">
+        <div class="phone" id="hero-phone"><img src="shots/take.jpg" width="603" height="1311" alt="A live take in AlphaTake: the belief that India's EV boom will happen, ₹ 50,267.70 against the ₹ 49,826.83 put in, its line above the dotted Nifty 50, and all 7 signs on track"></div>
+        <div class="glass float f1" aria-hidden="true"><small>What it holds</small><div class="sleeve"><i style="width:19%;background:#4FD6C4"></i><i style="width:16%;background:#2FB3A3"></i><i style="width:11%;background:#17857A"></i><i style="width:54%;background:rgba(255,255,255,.14)"></i></div><div class="hold-names"><b>Hyundai</b> 19% · <b>Tata Power</b> 16% · <b>PCBL</b> 11%</div></div>
+        <div class="glass float f2" aria-hidden="true"><small>Today</small><b class="dot big">+1<i>.</i>00%</b><span class="up">+0.50 ahead of Nifty 50</span></div>
       </div>
     </div>
-  </section>
-
-  <section class="board" id="takes" aria-labelledby="takes-h">
-    <div class="wrap">
-      <h2 id="takes-h" class="reveal">Takes from AlphaTake's desks</h2>
-      <p class="sub reveal">Each one is a belief, the companies it reaches, and a number you can check. Here is how each take's companies moved over the past year, against the Nifty 50 over the same days.</p>
-    </div>
-    <div class="cards" id="cards" tabindex="0" aria-label="Takes and how their companies moved over the past year"></div>
-    <p class="wrap fine reveal">Returns show how each take's companies moved over the past 12 months, weighted as the take holds them. They are not a record of trades. Updated from the app every day.</p>
   </section>
 
   <section class="wrap sec" id="how" aria-labelledby="how-h">
-    <h2 id="how-h" class="reveal">From a hunch to a portfolio</h2>
+    <div class="head">
+      <span class="eyebrow reveal">How it works</span>
+      <h2 id="how-h" class="reveal">From a view to a portfolio you own.</h2>
+    </div>
     <ol class="steps">
-      <li class="step reveal">
-        <div class="phone sm"><img src="shots/map.jpg" width="603" height="1311" loading="lazy" alt="A take's Map: how a belief about nuclear power reaches each company it holds, how strongly, and how much is already in each price"></div>
-        <div class="step-copy">
-          <span class="n">1</span>
-          <h3>Say what you believe</h3>
-          <p>"Solar will be over half of India's new power capacity." The engine reads the sources, maps cause and effect, and shows how your belief reaches each company, and what works against it.</p>
+      <li class="step">
+        <div class="step-copy reveal">
+          <span class="eyebrow">I · State your view</span>
+          <h3>Say it the way you would say it.</h3>
+          <p>Write what you believe will change, in plain words, and say how sure you are. How sure you are decides how the portfolio is spread.</p>
+          <ul class="facts">
+            <li>Begin from a ready idea, or answer four questions to form one.</li>
+            <li>Your words are checked before anything is built.</li>
+          </ul>
+        </div>
+        <div class="step-fig reveal">
+          <div class="phone">
+            <div class="screen" role="img" aria-label="Making a take: the belief that solar power will get cheaper than coal, with Quite sure picked">
+              <div class="sb"><span>9:41</span><svg><use href="#sbar"/></svg></div>
+              <div class="bar-top"><span class="back"><svg><use href="#chev"/></svg></span><b>Make a take</b><span></span></div>
+              <div class="scr-h">What do you believe?</div>
+              <div class="scr-card amber">
+                <span class="chip"><i></i>Your take</span><span class="cnt">39/500</span>
+                <p class="scr-belief">Solar power will get cheaper than coal.</p>
+                <p class="scr-lab">How sure are you?</p>
+                <div class="sure">
+                  <span><em style="--c:5"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></em>Just a feeling</span>
+                  <span class="on"><em class="l" style="--c:3"><i></i><i></i><i></i><i></i><i></i><i></i></em>Quite sure</span>
+                  <span><em class="l" style="--c:3"><i></i><i></i><i></i></em>Very sure</span>
+                </div>
+                <div class="sure-foot"><span>A balanced mix.</span><span class="pager"><i class="on"></i><i></i><i></i><i></i></span></div>
+              </div>
+              <div class="scr-sec">Or start from</div>
+              <div class="scr-row"><span class="ic"><svg><use href="#pen"/></svg></span><span><b>Guided take</b><small>Answer 4 questions to form a view</small></span></div>
+              <div class="scr-cta"><b>Build my take</b><small>We check your words first. Nothing is bought yet.</small></div>
+            </div>
+          </div>
         </div>
       </li>
-      <li class="step reveal">
-        <div class="phone sm"><img src="shots/take.jpg" width="603" height="1311" loading="lazy" alt="A take's page: the take's return as a glowing line against the dotted Nifty 50 over a year"></div>
-        <div class="step-copy">
-          <span class="n">2</span>
-          <h3>Back it with paper money</h3>
-          <p>Whole shares at real prices, less the charges a broker would take. Nothing is spent, and your record never resets.</p>
+
+      <li class="step">
+        <div class="step-copy reveal">
+          <span class="eyebrow">II · See what you would own</span>
+          <h3>About 400 companies, weighed against one belief.</h3>
+          <p>AlphaTake reads the sources, scores the market against your view, and builds the portfolio: which companies, how much of each, funds where they fit, and the reason each one is there.</p>
+          <ul class="facts">
+            <li>Whole shares at real prices, with what stays as cash shown to the paisa.</li>
+            <li>Change anything before you go ahead.</li>
+          </ul>
+        </div>
+        <div class="step-fig reveal">
+          <div class="phone"><img src="shots/own.jpg" width="603" height="1311" loading="lazy" alt="What you'd own for the belief that silver prices will keep rising: ₹ 50,000 across 8 holdings, led by Hindustan Zinc, Vedanta and Hindustan Copper"></div>
         </div>
       </li>
-      <li class="step reveal">
-        <div class="phone sm"><img src="shots/stock.jpg" width="603" height="1311" loading="lazy" alt="BHEL's stock page: price, a one year chart, market cap, P/E and its 52-week range"></div>
-        <div class="step-copy">
-          <span class="n">3</span>
-          <h3>See if you were right</h3>
-          <p>Every take gets a graph against the Nifty 50, every trading day. Tap any company for its price, its chart and the takes that hold it.</p>
+
+      <li class="step">
+        <div class="step-copy reveal">
+          <span class="eyebrow">III · Invest through your own broker</span>
+          <h3>One approval. Your broker, your account.</h3>
+          <p>When you are ready, the orders go to the broker you already use. AlphaTake never holds your money, and nothing is placed without your approval.</p>
+          <ul class="facts">
+            <li>Every order is shown before it is placed.</li>
+            <li>The shares are yours, in your own demat account.</li>
+          </ul>
+        </div>
+        <div class="step-fig reveal">
+          <div class="phone">
+            <div class="screen" role="img" aria-label="Placing a take with your broker: 8 buy orders for ₹ 49,176.82, ready to approve">
+              <div class="sb"><span>9:41</span><svg><use href="#sbar"/></svg></div>
+              <div class="bar-top"><span class="back"><svg><use href="#chev"/></svg></span><b>Place with your broker</b><span></span></div>
+              <div class="scr-card teal">
+                <span class="chip ok"><i></i>Ready to place</span>
+                <p class="scr-belief" style="font-size:5.6cqw">Silver prices will keep rising over the next 3 years</p>
+                <div class="amt"><span style="padding:0"><small>8 buy orders</small><b>₹ 49,176.82</b></span><span>₹ 823.18 stays as cash</span></div>
+              </div>
+              <div class="scr-row"><span class="ic"><svg><use href="#bank"/></svg></span><span><b>Your broker</b><small>Demat account ending 4821</small></span><span class="ok">Connected</span></div>
+              <div class="orders"><ul>
+                <li><span class="lg">HZ</span><span><b>Hindustan Zinc</b><small>Buy 23 shares</small></span><span class="v">₹ 11,960.00</span></li>
+                <li><span class="lg">VE</span><span><b>Vedanta</b><small>Buy 14 shares</small></span><span class="v">₹ 6,860.00</span></li>
+                <li><span class="lg">HC</span><span><b>Hindustan Copper</b><small>Buy 14 shares</small></span><span class="v">₹ 4,760.00</span></li>
+              </ul><div class="more">and 5 more orders</div></div>
+              <div class="scr-cta"><b>Approve and place 8 orders</b><small>Your broker's charges apply. Your money never leaves your account.</small></div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step-copy reveal">
+          <span class="eyebrow">IV · Watched every trading day</span>
+          <h3>Is it working? You will know each day.</h3>
+          <p>Each trading day shows whether your view is on track, what moved it, and the news behind every holding. Each week, AlphaTake reviews the evidence and proposes changes for your approval.</p>
+          <ul class="facts">
+            <li>Measured against the Nifty 50 over the same days.</li>
+            <li>Approve a change and it is placed with your broker.</li>
+          </ul>
+        </div>
+        <div class="step-fig reveal">
+          <div class="phone"><img src="shots/today.jpg" width="603" height="1311" loading="lazy" alt="A take's Today tab: all 7 signs on track, up 1.00% on the day and 0.50 ahead of the Nifty 50, with the companies that moved it"></div>
+          <div class="glass float f3" aria-hidden="true"><small>Weekly review · Friday</small><p><b>Replace Exide Industries with Amara Raja.</b> Battery orders shifted this week. Approve to place with your broker.</p></div>
         </div>
       </li>
     </ol>
   </section>
 
-  <section class="wrap sec desks" id="desks" aria-labelledby="desks-h">
-    <div class="desks-grid">
-      <div>
-        <h2 id="desks-h" class="reveal">Start with the desks</h2>
-        <p class="sub reveal">AlphaTake's own research desks post takes every week, one sector each. Follow the ones you care about and your feed starts full. Their records are public, like everyone's.</p>
-        <ul class="desk-list" id="desk-list"></ul>
+  <section class="wrap sec" id="reasoning" aria-labelledby="reasoning-h">
+    <div class="head">
+      <span class="eyebrow reveal">The reasoning</span>
+      <h2 id="reasoning-h" class="reveal">Every holding, traced to your view.</h2>
+      <p class="sub reveal">Nothing is a black box. For every company, AlphaTake shows how your belief reaches it, how strongly, the sources behind it, how much is already in the price, and what works against it.</p>
+    </div>
+    <div class="tree">
+      <article class="lit teal reveal" aria-label="The belief">
+        <div class="who"><span class="disc"><svg><use href="#g-alphatake"/></svg></span><span><b>Your take</b><small>Quite sure</small></span></div>
+        <p class="belief">EV boom is going to happen in India.</p>
+        <div class="tiles"><span><small>Since 21 Oct</small><b class="dot">+0<i>.</i>88%</b></span><span><small>vs Nifty 50</small><b class="dot good">+0<i>.</i>38</b></span></div>
+      </article>
+      <div class="routes">
+        <div class="route reveal">
+          <div class="route-h"><b>Electric vehicle adoption</b><span class="str helps"><svg aria-hidden="true"><use href="#arr-up"/></svg>Helps · Strong</span></div>
+          <p>More EVs sold means more revenue for the makers that lead the switch.</p>
+          <ul class="cos">
+            <li><span>Hyundai Motor India<small>19% of the take</small></span><span class="meter" role="img" aria-label="62% already in the price"><i style="width:62%"></i></span><span class="pct">62%</span></li>
+            <li><span>Tata Motors<small>6% of the take</small></span><span class="meter" role="img" aria-label="71% already in the price"><i style="width:71%"></i></span><span class="pct">71%</span></li>
+            <li><span>Ashok Leyland<small>5% of the take</small></span><span class="meter" role="img" aria-label="38% already in the price"><i style="width:38%"></i></span><span class="pct">38%</span></li>
+          </ul>
+        </div>
+        <div class="route reveal">
+          <div class="route-h"><b>Battery demand in India</b><span class="str helps"><svg aria-hidden="true"><use href="#arr-up"/></svg>Helps · Strong</span></div>
+          <p>Every EV needs cells, carbon black and graphite, mostly from a handful of suppliers.</p>
+          <ul class="cos">
+            <li><span>PCBL Chemical<small>11% of the take</small></span><span class="meter" role="img" aria-label="31% already in the price"><i style="width:31%"></i></span><span class="pct">31%</span></li>
+            <li><span>Himadri Speciality Chemical<small>8% of the take</small></span><span class="meter" role="img" aria-label="24% already in the price"><i style="width:24%"></i></span><span class="pct">24%</span></li>
+            <li><span>Exide Industries<small>7% of the take</small></span><span class="meter" role="img" aria-label="55% already in the price"><i style="width:55%"></i></span><span class="pct">55%</span></li>
+          </ul>
+        </div>
+        <div class="route reveal">
+          <div class="route-h"><b>Power for charging</b><span class="str helps"><svg aria-hidden="true"><use href="#arr-up"/></svg>Helps · Medium</span></div>
+          <p>Charging adds steady demand for the utilities building out the grid.</p>
+          <ul class="cos">
+            <li><span>Tata Power Company<small>16% of the take</small></span><span class="meter" role="img" aria-label="66% already in the price"><i style="width:66%"></i></span><span class="pct">66%</span></li>
+            <li><span>JSW Energy<small>9% of the take</small></span><span class="meter" role="img" aria-label="47% already in the price"><i style="width:47%"></i></span><span class="pct">47%</span></li>
+          </ul>
+        </div>
+        <div class="route against reveal">
+          <div class="route-h"><b>Imported cells stay expensive</b><span class="str against"><svg aria-hidden="true"><use href="#arr-down"/></svg>Works against · Medium</span></div>
+          <p>If cell prices stay high, EVs stay costly and the switch slows. AlphaTake watches this as one of the take's signals.</p>
+        </div>
+        <div class="legend reveal"><span><span class="meter"><i style="width:60%"></i></span>Already in the price</span><span class="up">↑ Helps</span><span style="color:var(--down)">↓ Works against</span></div>
       </div>
-      <div class="phone md reveal"><img src="shots/desk.jpg" width="603" height="1311" alt="AlphaTake Energy's profile: verified, its public takes, and its average 1 year record against the Nifty 50"></div>
+    </div>
+    <div class="stats">
+      <div class="reveal"><b>400</b><span>companies scored against every view</span></div>
+      <div class="reveal"><b>83</b><span>effects of one belief traced</span></div>
+      <div class="reveal"><b>41</b><span>sources behind this view</span></div>
+      <div class="reveal"><b>Daily</b><span>review against the news</span></div>
     </div>
   </section>
 
-  <section class="wrap sec" aria-label="Why AlphaTake">
+  <section class="board" id="desks" aria-labelledby="desks-h">
+    <div class="wrap"><div class="head">
+      <span class="eyebrow reveal">Views from our desks</span>
+      <h2 id="desks-h" class="reveal">Our research desks publish their views, and their records.</h2>
+      <p class="sub reveal">One desk per sector, posting every week. Here is how each view's companies moved over the past year, against the Nifty 50 over the same days.</p>
+    </div></div>
+    <div class="cards" id="cards" tabindex="0" aria-label="Views from AlphaTake's desks and how their companies moved over the past year"></div>
+    <p class="wrap fine reveal">Past-year moves as of 25 October 2026, weighted as each view holds its companies. They are not a record of trades.</p>
+  </section>
+
+  <section class="wrap sec" aria-labelledby="principles-h">
+    <div class="head">
+      <span class="eyebrow reveal">Principles</span>
+      <h2 id="principles-h" class="reveal">Built to be held to account.</h2>
+    </div>
     <div class="pillars">
       <article class="pillar reveal">
-        <div class="viz" aria-hidden="true"><span class="dot big"><i>−</i>12<i>.</i>71%</span><small>Nifty 50, the same year</small></div>
-        <h3>Scored against the Nifty 50</h3>
-        <p>Every take is measured against the index over the same trading days. You see straight away whether your view beat the market.</p>
+        <div class="viz" aria-hidden="true"><span class="dot up">+0<i>.</i>50</span><small>ahead of the Nifty 50 today</small></div>
+        <h3>Against the Nifty 50</h3>
+        <p>Every view is benchmarked over the same trading days, so you know at once whether it beat the market.</p>
       </article>
       <article class="pillar reveal">
-        <div class="viz"><p class="hindi" lang="hi">जिस पर आपको यक़ीन है, उस पर पैसा लगाइए।<small lang="en">Put your money behind what you believe.</small></p></div>
-        <h3>In English or Hindi</h3>
-        <p>The whole app works in both, from your first take to your score. Write it the way you would say it.</p>
+        <div class="viz" aria-hidden="true"><span class="chain"><b>Your view</b><b>Your broker</b><b>Your account</b></span></div>
+        <h3>Your shares, your account</h3>
+        <p>Orders are placed through your own broker. AlphaTake never takes custody of your money or your shares.</p>
       </article>
       <article class="pillar reveal">
         <div class="viz" aria-hidden="true"><span class="private"><b>Private</b> until you share it</span></div>
-        <h3>Yours, until you say so</h3>
-        <p>Your takes are private by default. Share one when you're ready, and it shows its return, never your money.</p>
+        <h3>Private until you share</h3>
+        <p>Your views are private by default. Share one, and it shows percentages, never your money.</p>
       </article>
     </div>
   </section>
 
   <section class="end" aria-labelledby="end-h">
     <div class="wrap">
-      <h2 id="end-h">What's your take?</h2>
-      <p class="sub reveal">AlphaTake is coming soon to iPhone.</p>
+      <h2 id="end-h">What is your view?</h2>
+      <p class="sub reveal">AlphaTake is coming soon to iPhone and Android.</p>
       <div class="cta-row reveal">
         <span class="badge"><svg aria-hidden="true"><use href="#iphone"/></svg><span><small>Coming soon</small><b>on iPhone</b></span></span>
+        <span class="badge ghost"><svg aria-hidden="true" style="--eye:#06070B"><use href="#android"/></svg><span><small>Coming soon</small><b>on Android</b></span></span>
       </div>
     </div>
   </section>
@@ -159,7 +280,7 @@
 
 <footer>
   <div class="wrap foot">
-    <span>Paper money only. Not investment advice. Past moves of a take's companies do not predict future returns.</span>
+    <span>Not investment advice. AlphaTake is not yet available, and what this page shows may change before launch. Past moves of a view's companies do not predict future returns.</span>
     <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
   </div>
 </footer>
@@ -178,11 +299,10 @@
   const onScroll = () => nav.classList.toggle('solid', scrollY > 24);
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  // The desks' public takes, as the app shows them. Replaced from the API when it answers.
+  // The desks' public takes, as the app showed them on 25 October 2026.
   const HUE = ['indigo', 'teal', 'amber'];
   const DESK = { alphatake: ['AlphaTake', 'alphatake'], at_energy: ['AlphaTake Energy', 'energy'], at_consumer: ['AlphaTake Consumer', 'consumer'],
-    at_industrials: ['AlphaTake Industrials', 'industrials'], at_macro: ['AlphaTake Macro', 'macro'], at_financials: ['AlphaTake Financials', 'financials'],
-    at_health: ['AlphaTake Health', 'health'], at_tech: ['AlphaTake Tech', 'tech'] };
+    at_industrials: ['AlphaTake Industrials', 'industrials'], at_macro: ['AlphaTake Macro', 'macro'] };
   const TAKES = [
     ['alphatake', 'Nuclear energy will grow a lot in the coming decade.', 61.61],
     ['alphatake', 'Generic GLP-1 drugs make Indian pharma exporters boom.', 22.43],
@@ -205,9 +325,6 @@
   };
   $('#cards').innerHTML = TAKES.map(card).join('');
 
-  $('#desk-list').innerHTML = Object.entries(DESK).map(([h, [name, g]], i) =>
-    `<li><span class="disc lit-${HUE[(i + 1) % 3]}"><svg><use href="#g-${g}"/></svg></span><span><b>${name}</b><small>@${h}</small></span></li>`).join('');
-
   // The hero's network of companies, with a belief travelling through it.
   const NAMES = ['HDFC Bank', 'ICICI Bank', 'SBI', 'Reliance', 'TCS', 'Infosys', 'L&T', 'ITC', 'HAL', 'BEL', 'NTPC', 'Tata Power', 'Adani Ports',
     'Bharti Airtel', 'Maruti', 'Tata Motors', 'M&M', 'Sun Pharma', 'Titan', 'Asian Paints', 'Bajaj Finance', 'Axis Bank', 'Kotak Bank', 'HUL',
@@ -221,7 +338,7 @@
     const dpr = Math.min(2, devicePixelRatio || 1);
     W = cv.clientWidth; H = cv.clientHeight;
     cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const n = Math.round(Math.min(NAMES.length, W * H / 28000));
+    const n = Math.round(Math.min(NAMES.length, W * H / 30000));
     nodes = NAMES.slice().sort(() => Math.random() - 0.5).slice(0, n).map((name) => ({ name, x: rnd(0.04, 0.98) * W, y: rnd(0.08, 0.95) * H, p: rnd(0, 7), s: rnd(0.15, 0.4), lit: 0 }));
     pulses = [];
   }
@@ -239,16 +356,16 @@
     cx.lineWidth = 1;
     for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
       const d = Math.hypot(P[i][0] - P[j][0], P[i][1] - P[j][1]);
-      if (d < 170) { cx.strokeStyle = `rgba(150,156,190,${(1 - d / 170) * 0.11})`; cx.beginPath(); cx.moveTo(...P[i]); cx.lineTo(...P[j]); cx.stroke(); }
+      if (d < 170) { cx.strokeStyle = `rgba(150,156,190,${(1 - d / 170) * 0.1})`; cx.beginPath(); cx.moveTo(...P[i]); cx.lineTo(...P[j]); cx.stroke(); }
     }
     for (const p of pulses) {
-      p.t += dt / 520;
+      p.t += dt / 620;
       const a = p.path[p.seg], b = p.path[p.seg + 1];
       const A = P[nodes.indexOf(a)], B = P[nodes.indexOf(b)], k = Math.min(1, p.t);
       const x = A[0] + (B[0] - A[0]) * k, y = A[1] + (B[1] - A[1]) * k;
-      const g = cx.createLinearGradient(A[0], A[1], x, y); g.addColorStop(0, 'rgba(169,163,255,0)'); g.addColorStop(1, 'rgba(169,163,255,0.9)');
-      cx.strokeStyle = g; cx.lineWidth = 1.6; cx.beginPath(); cx.moveTo(...A); cx.lineTo(x, y); cx.stroke();
-      cx.fillStyle = '#F4F5F8'; cx.shadowColor = '#A9A3FF'; cx.shadowBlur = 14; cx.beginPath(); cx.arc(x, y, 2.6, 0, 7); cx.fill(); cx.shadowBlur = 0;
+      const g = cx.createLinearGradient(A[0], A[1], x, y); g.addColorStop(0, 'rgba(169,163,255,0)'); g.addColorStop(1, 'rgba(169,163,255,0.8)');
+      cx.strokeStyle = g; cx.lineWidth = 1.4; cx.beginPath(); cx.moveTo(...A); cx.lineTo(x, y); cx.stroke();
+      cx.fillStyle = '#F4F5F8'; cx.shadowColor = '#A9A3FF'; cx.shadowBlur = 10; cx.beginPath(); cx.arc(x, y, 2.4, 0, 7); cx.fill(); cx.shadowBlur = 0;
       a.lit = 1;
       if (p.t >= 1) { b.lit = 1; p.seg++; p.t = 0; }
     }
@@ -262,14 +379,14 @@
       cx.fillText(n.name, x + 7, y + 4);
       n.lit = Math.max(0, l - dt / 1800);
     });
-    since += dt; if (since > 700) { since = 0; spawn(); }
+    since += dt; if (since > 900) { since = 0; spawn(); }
     if (running) requestAnimationFrame(frame);
   }
   layout();
   const still = () => requestAnimationFrame((t) => { last = t; const r = running; running = false; frame(t); running = r; });
   if (reduce) { running = false; still(); }
   else {
-    for (let k = 0; k < 3; k++) spawn();
+    for (let k = 0; k < 2; k++) spawn();
     requestAnimationFrame((t) => { last = t; frame(t); });
     new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was) requestAnimationFrame((t) => { last = t; frame(t); }); }).observe(cv);
     addEventListener('pointermove', (e) => { mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5; }, { passive: true });
@@ -277,23 +394,19 @@
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { layout(); if (reduce) still(); }, 200); });
   if (document.fonts) document.fonts.ready.then(() => { if (reduce) still(); });
 
-  // The demo plays only while it is on screen, and never under Reduce Motion.
-  const hero = $('#hero-video');
-  if (!reduce) new IntersectionObserver(([e]) => (e.isIntersecting ? hero.play().catch(() => {}) : hero.pause()), { threshold: 0.3 }).observe(hero);
-
   if (reduce || !window.gsap) return;
   gsap.registerPlugin(ScrollTrigger);
   const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-  tl.from('.hero .pill', { y: 16, opacity: 0, duration: .7 })
-    .from('h1 .ln > span', { yPercent: 110, duration: 1.1, stagger: .08 }, '<.1')
-    .from('.hero .reveal', { y: 24, opacity: 0, duration: .9, stagger: .1 }, '-=.7')
-    .from('#hero-phone', { y: 120, opacity: 0, rotate: 4, duration: 1.4, ease: 'power3.out' }, .25)
-    .from('.float', { y: 30, opacity: 0, scale: .94, duration: .9, stagger: .15, ease: 'back.out(1.5)' }, .9);
-  gsap.utils.toArray('.float').forEach((f, i) => gsap.to(f, { y: '+=10', duration: 2.6 + i * .4, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: 2 }));
-  gsap.to('#hero-phone', { y: -50, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.utils.toArray('main > section:not(.hero) .reveal').forEach((el) => gsap.from(el, { y: 40, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } }));
+  tl.from('.hero .eyebrow', { y: 16, opacity: 0, duration: .7 })
+    .from('h1 .ln > span', { yPercent: 110, duration: 1.2 }, '<.1')
+    .from('.hero-copy .reveal:not(.eyebrow)', { y: 24, opacity: 0, duration: .9, stagger: .1 }, '-=.75')
+    .from('#hero-phone', { y: 100, opacity: 0, duration: 1.4, ease: 'power3.out' }, .25)
+    .from('.hero .float', { y: 24, opacity: 0, duration: .9, stagger: .15, ease: 'power3.out' }, .9);
+  gsap.to('#hero-phone', { y: -40, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.utils.toArray('main > section:not(.hero) .reveal').forEach((el) => gsap.from(el, { y: 36, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } }));
+  gsap.utils.toArray('.step-fig .float').forEach((el) => gsap.from(el, { y: 24, opacity: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } }));
   gsap.from('#cards .lit', { y: 40, opacity: 0, duration: .9, stagger: .06, ease: 'power3.out', scrollTrigger: { trigger: '#cards', start: 'top 85%' } });
-  gsap.from('.end h2', { scale: .9, opacity: 0, y: 30, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.end', start: 'top 75%' } });
+  gsap.from('.end h2', { y: 30, opacity: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.end', start: 'top 75%' } });
 })();
 </script>
 </body>

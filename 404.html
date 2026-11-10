@@ -34,19 +34,18 @@
   .hold { border-radius: 30px; height: 420px; background: var(--pane); box-shadow: inset 0 0 0 1px var(--pane-line); animation: breathe 1.8s ease-in-out infinite alternate; }
   @keyframes breathe { from { opacity: 1 } to { opacity: .45 } }
   @media (prefers-reduced-motion: reduce) { .hold { animation: none } }
-  /* the badge below says it; the header has no room for both on a narrow phone */
-  @media (max-width: 380px) { .nav-links { display: none } }
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="iphone" viewBox="0 0 24 24"><rect x="6" y="1.5" width="12" height="21" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="10" y="3.6" width="4" height="1.4" rx=".7" fill="currentColor"/></symbol>
+  <symbol id="android" viewBox="0 0 24 24"><path d="M3 19.5a9 9 0 0 1 18 0z" fill="currentColor"/><path d="M7.4 11.9 5.6 8.9M16.6 11.9l1.8-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="8.7" cy="15.8" r="1.15" fill="var(--eye, #F4F5F8)"/><circle cx="15.3" cy="15.8" r="1.15" fill="var(--eye, #F4F5F8)"/></symbol>
   <symbol id="tick" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#06070B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 <header class="nav solid">
   <div class="wrap">
     <a class="brand" href="/" aria-label="AlphaTake home"><img class="mark" src="/logo.svg" alt="" width="32" height="32">AlphaTake</a>
-    <nav class="nav-links" aria-label="Page"><span class="pill"><span class="live" aria-hidden="true"></span>Coming soon on iPhone</span></nav>
+    <nav class="nav-links" aria-label="Page"><span class="pill"><span class="live" aria-hidden="true"></span><span class="long">Coming soon on iPhone and Android</span><span class="short">Coming soon</span></span></nav>
   </div>
 </header>
 <main class="share"><div class="wrap" id="root"><div class="hold" aria-label="Loading the take"></div></div></main>
@@ -94,7 +93,7 @@
       ${w ? line(w.points) : ''}
     </article>
     ${weights?.length ? `<ul class="holds" aria-label="Companies by share of the take">${weights.slice(0, 8).map((h) => `<li><span class="name">${esc(h.name || h.symbol)}</span><span class="bar" aria-hidden="true"><i style="width:${Math.round(h.weight * 100)}%"></i></span><span class="pct">${Math.round(h.weight * 100)}%</span></li>`).join('')}</ul>` : ''}
-    <div class="open"><span class="badge"><svg aria-hidden="true"><use href="#iphone"/></svg><span><small>Coming soon</small><b>on iPhone</b></span></span><span class="note">Make your own take, scored against the Nifty 50.</span></div>
+    <div class="open"><span class="badge"><svg aria-hidden="true"><use href="#iphone"/></svg><span><small>Coming soon</small><b>on iPhone</b></span></span><span class="badge ghost"><svg aria-hidden="true" style="--eye:#06070B"><use href="#android"/></svg><span><small>Coming soon</small><b>on Android</b></span></span><span class="note">Make your own take, scored against the Nifty 50.</span></div>
     <p class="fine">Paper money. Not investment advice. ${w ? 'The line is how the take’s companies moved, weighted as it holds them.' : ''}</p>`;
   }).catch(() => gone('This take did not load', 'Try again in a moment.'));
 })();
