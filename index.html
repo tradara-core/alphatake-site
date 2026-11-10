@@ -17,7 +17,6 @@
 <link rel="preload" href="fonts/GeneralSans-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@900&display=swap">
 <link rel="stylesheet" href="home.css">
 </head>
 <body class="ed">
@@ -66,7 +65,7 @@
       <div class="stage">
         <div class="phone" id="hero-phone"><img src="shots/take.jpg" width="603" height="1311" alt="A live take in AlphaTake: the belief that India's EV boom will happen, ₹ 50,267.70 against the ₹ 49,826.83 put in, its line above the dotted Nifty 50, and all 7 signs on track"></div>
         <div class="glass float f1" aria-hidden="true"><small>What it holds</small><div class="sleeve"><i style="width:19%;background:#4FD6C4"></i><i style="width:14%;background:#2FB3A3"></i><i style="width:11%;background:#17857A"></i><i style="width:56%;background:rgba(255,255,255,.14)"></i></div><div class="hold-names"><b>Hyundai</b> 19% · <b>Tata Power</b> 14% · <b>NTPC</b> 11%</div></div>
-        <div class="glass float f2" aria-hidden="true"><small>Today</small><b class="dot big">+1<i>.</i>00%</b><span class="up">+0.50 ahead of Nifty 50</span></div>
+        <div class="glass float f2" aria-hidden="true"><small>Today</small><b class="num big">+1.00%</b><span class="up">+0.50 ahead of Nifty 50</span></div>
       </div>
     </div>
   </section>
@@ -256,7 +255,7 @@
     </div>
     <div class="pillars">
       <article class="pillar reveal">
-        <div class="viz" aria-hidden="true"><span class="dot up">+0<i>.</i>50</span><small>ahead of the Nifty 50 today</small></div>
+        <div class="viz" aria-hidden="true"><span class="num up">+0.50</span><small>ahead of the Nifty 50 today</small></div>
         <h3>Measured against the market</h3>
         <p>Every take is compared with the Nifty 50 over the same trading days, so you can see at once whether your view beat the market.</p>
       </article>
@@ -299,8 +298,6 @@
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (s) => document.querySelector(s);
   const sg = (v, pct = true) => (v >= 0 ? '+' : '−') + Math.abs(v).toFixed(2) + (pct ? '%' : '');
-  // Doto's point reads like a comma and its minus like a dash: both are set in General Sans, as the app does.
-  const dots = (text) => text.replace(/[+−.]/g, (ch) => `<i>${ch}</i>`);
 
   const nav = $('#nav');
   const onScroll = () => nav.classList.toggle('solid', scrollY > 24);
@@ -327,7 +324,7 @@
     return `<article class="lit ${HUE[i % 3]}">
       <div class="who"><span class="disc"><svg><use href="#g-${g}"/></svg></span><span><b>${name}<svg class="tk" aria-label="verified"><use href="#tick"/></svg></b><small>@${h}</small></span></div>
       <p class="belief">${belief}</p>
-      <div class="tiles"><span><small>1 year</small><b class="dot">${dots(sg(ret))}</b></span><span><small>vs Nifty 50</small><b class="dot ${ret - NIFTY >= 0 ? 'good' : 'bad'}">${dots(sg(ret - NIFTY, false))}</b></span></div>
+      <div class="tiles"><span><small>1 year</small><b class="num">${sg(ret)}</b></span><span><small>vs Nifty 50</small><b class="num ${ret - NIFTY >= 0 ? 'good' : 'bad'}">${sg(ret - NIFTY, false)}</b></span></div>
     </article>`;
   };
   $('#cards').innerHTML = TAKES.map(card).join('');

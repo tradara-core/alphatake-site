@@ -3,7 +3,7 @@
 @font-face { font-family: "General Sans"; src: url(fonts/GeneralSans-600.woff2) format("woff2"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "General Sans"; src: url(fonts/GeneralSans-700.woff2) format("woff2"); font-weight: 700; font-display: swap; }
 
-/* The app's own look: dot-grid night ground, lit take cards, dot numerals, white discs.
+/* The app's own look: dot-grid night ground, lit take cards, white discs.
    The home page is calmer on top: large quiet headlines, tracked labels, fewer glows. */
 :root {
   --bg: #06070B;
@@ -21,7 +21,6 @@
   --amber: linear-gradient(160deg, #F6B24E 0%, #B9601A 50%, #3A1C07 100%);
   --teal: linear-gradient(160deg, #4FD6C4 0%, #17857A 50%, #08302C 100%);
   --ui: "General Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  --dotf: "Doto", ui-monospace, "SF Mono", monospace;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -46,8 +45,7 @@ img { max-width: 100%; }
   padding-left: max(24px, env(safe-area-inset-left, 0px));
   padding-right: max(24px, env(safe-area-inset-right, 0px));
 }
-.dot { font-family: var(--dotf); font-weight: 900; letter-spacing: 0.02em; }
-.dot i { font-family: var(--ui); font-style: normal; font-weight: 600; margin: 0 1px; }
+.num { font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
 .up { color: var(--up); }
 
 /* Nav */
@@ -237,7 +235,7 @@ h3 { margin: 0; font-size: 24px; line-height: 1.2; font-weight: 600; letter-spac
 
 /* The desks' views */
 .board { padding-top: 140px; }
-.cards { display: flex; gap: 16px; margin-top: 48px; padding: 10px max(24px, calc((100% - 1200px) / 2 + 24px)) 30px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: max(24px, calc((100% - 1200px) / 2 + 24px)); scrollbar-width: none; }
+.cards { display: flex; gap: 16px; margin-top: 48px; padding: 10px max(24px, calc((100% - 1200px) / 2 + 24px)) 96px; margin-bottom: -66px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: max(24px, calc((100% - 1200px) / 2 + 24px)); scrollbar-width: none; }
 .cards::-webkit-scrollbar { display: none; }
 .cards .lit { flex: 0 0 320px; scroll-snap-align: start; }
 
@@ -247,7 +245,7 @@ h3 { margin: 0; font-size: 24px; line-height: 1.2; font-weight: 600; letter-spac
 .pillar h3 { font-size: 24px; letter-spacing: -0.025em; }
 .pillar p { margin: 10px 0 0; color: var(--ink2); font-size: 16px; }
 .viz { height: 132px; display: grid; place-items: center; align-content: center; text-align: center; border-radius: 20px; background: rgba(0,0,0,.28); margin-bottom: 22px; }
-.viz .dot { display: block; font-size: 42px; line-height: 1; }
+.viz .num { display: block; font-size: 42px; line-height: 1; }
 .viz small { display: block; margin-top: 10px; color: var(--ink3); font-size: 13px; }
 .chain { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 0 14px; font-size: 14px; color: var(--ink2); }
 .chain b { padding: 6px 12px; border-radius: 999px; background: var(--pane); box-shadow: inset 0 0 0 1px var(--pane-line); color: var(--ink); font-weight: 600; }
